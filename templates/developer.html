@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Developer Form</title>
+    <link rel="stylesheet" href="../static/css/developer.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="logo">Projects Champion 🏆</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/student">Students</a></li>
+            <li><a href="/developer">Developers</a></li>
+        </ul>
+    </div>
+    <h1>Developer Form</h1>
+    <form method="POST" action="/developer" class="form-group form-container" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="contact_no">Contact No:</label>
+        <input type="text" id="contact_no" name="contact_no" onkeypress="return restrictCharacters(event)" required>
+        <span id="errorText" class="error-message"></span><br>
+        <label for="whatsapp_no">Whatsapp No:</label>
+        <input type="text" id="whatsapp_no" name="whatsapp_no" required onkeypress="return restrictCharacters(event)" autocomplete="off">
+        <span id="errorText" class="error-msg"></span>
+        <input type="checkbox" id="copyCheckbox" name="copyCheckbox">
+    <label for="copyCheckbox" class="skill_adjust">Same as Contact Number</label>
+        <label for="">Gender</label>
+        <input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="female"> Female
+        <input type="radio" name="gender" value="other"> Other<br>
+        <label for="qualification">Qualification:</label>
+        <select name="qualification" id="qualification">
+            <option value="high_school">High School</option>
+            <option value="bachelors_degree">Bachelor's Degree</option>
+            <option value="masters_degree">Master's Degree</option>
+            <option value="phd">PhD</option>
+            <option value="ug">UG</option>
+            <option value="pg">PG</option>
+        </select><br>
+
+        <label for="skills" id="skill_label">Select the Skills which you know:</label><br>
+        <label>Programming Languages: </label>
+        <input type="checkbox" id="python" name="skills" value="Python">
+        <label for="python" class="skill_adjust">Python</label>
+        <input type="checkbox" id="java" name="skills" value="Java">
+        <label for="java" class="skill_adjust">Java</label>
+        <input type="checkbox" id="c" name="skills" value="C">
+        <label for="c" class="skill_adjust">C</label>
+        <input type="checkbox" id="cplus" name="skills" value="Cplus">
+        <label for="cplus" class="skill_adjust">C++</label>
+        <input type="checkbox" id="csharp" name="skills" value="C#">
+        <label for="csharp" class="skill_adjust">C#</label><br>
+        <label>Web Development: </label><br>
+        <input type="checkbox" id="html" name="skills" value="Html">
+        <label for="html" class="skill_adjust">HTML</label>
+        <input type="checkbox" id="css" name="skills" value="Css">
+        <label for="css" class="skill_adjust">CSS</label>
+        <input type="checkbox" id="javascript" name="skills" value="JavaScript">
+        <label for="javascript" class="skill_adjust">JavaScript</label><br>
+        <input type="checkbox" id="angularjs" name="skills" value="Angularjs">
+        <label for="angularjs" class="skill_adjust">Angular JS</label>
+        <input type="checkbox" id="reactjs" name="skills" value="Reactjs">
+        <label for="reactjs" class="skill_adjust">React JS</label>
+        <input type="checkbox" id="vuejs" name="skills" value="Vuejs">
+        <label for="vuejs" class="skill_adjust">Vue JS</label><br>
+        <input type="checkbox" id="flask" name="skills" value="Flask">
+        <label for="Flask" class="skill_adjust">Flask Web Development</label><br>
+        <input type="checkbox" id="django" name="skills" value="Django">
+        <label for="django" class="skill_adjust">Django Web Development</label><br>
+        <input type="checkbox" id="wordpress" name="skills" value="Wordpress">
+        <label for="wordpress" class="skill_adjust">WordPress Development</label><br>
+        <label>Backend: </label>
+        <input type="checkbox" id="mysql" name="skills" value="Mysql">
+        <label for="mysql" class="skill_adjust">MySQL</label>
+        <input type="checkbox" id="mongodb" name="skills" value="Mongodb">
+        <label for="mongodb" class="skill_adjust">MongoDB</label>
+        <input type="checkbox" id="firebase" name="skills" value="Firebase">
+        <label for="firebase" class="skill_adjust">Firebase</label>
+        <input type="checkbox" id="php" name="skills" value="Php">
+        <label for="php" class="skill_adjust">PHP</label><br>
+        <label>App Development: </label><br>
+        <input type="checkbox" id="native" name="skills" value="Native">
+        <label for="native" class="skill_adjust">Native App Development</label><br>
+        <input type="checkbox" id="cpdvlpmnt" name="skills" value="Cpdvlpmnt">
+        <label for="cpdvlpmnt" class="skill_adjust">Cross-Platform App Development</label><br>
+        <input type="checkbox" id="hybrid" name="skills" value="Hybrid">
+        <label for="hybrid" class="skill_adjust">Hybrid App Development</label><br>
+        <input type="checkbox" id="mobile" name="skills" value="Mobile">
+        <label for="mobile" class="skill_adjust">Mobile App Development</label><br>
+        <input type="checkbox" id="enterprise" name="skills" value="Enterprise">
+        <label for="enterprise" class="skill_adjust">Enterprise App Development</label><br>
+        <label>Others: </label>
+        <input type="checkbox" id="pgui" name="skills" value="Pgui">
+        <label for="pgui" class="skill_adjust">Python GUI</label>
+        <input type="checkbox" id="jgui" name="skills" value="Jgui">
+        <label for="jgui" class="skill_adjust">Java GUI</label><br>
+        <!-- Add more checkboxes for other programming languages -->
+
+        <label for="experience">Years of Experience:</label>
+        <input type="number" id="experience" name="experience" required><br>
+
+        <label for="skill_description">Describe Your Skills:</label><br>
+        <textarea id="skill_description" name="skill_description" required onkeydown="restrictTextarea(event);" oninput="countWords();" rows="4" cols="50"></textarea>
+        <div id="warningMessage"></div><br>
+
+        <label for="file">Upload your Resume or CV:</label>
+        <input type="file" id="image" name="file" accept=".doc, .docx, .pdf, .txt" required><br><br>
+
+        <input type="checkbox" id="accept_terms" name="accept_terms" required>
+        <label for="accept_terms" class="skill_adjust">I accept the <a href="/dev_tandc" target="_blank"> terms and conditions</a></label><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <div class="footer-bottom">
+        <p>&copy; 2023 Projects Champion. All rights reserved. | Privacy Policy | Terms of Service</p>
+      </div>
+    <script src="../static/js/input.js"></script>
+</body>
+</html>
