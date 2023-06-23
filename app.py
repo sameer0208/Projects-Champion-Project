@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 import os
 from pymongo import MongoClient
+import flask
 app = Flask(__name__)
+print(flask.__version__)
 
 connection_string = "mongodb+srv://2110030317:sameer_k_0208@cluster0.gxzf2vn.mongodb.net/projectbuddy?retryWrites=true&w=majority"
 client = MongoClient(connection_string)
@@ -119,4 +121,4 @@ def services():
     return render_template('services.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0')
